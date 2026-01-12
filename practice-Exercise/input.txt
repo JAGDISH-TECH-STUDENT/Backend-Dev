@@ -1,0 +1,2 @@
+This is a Demo txt file.
+It is used for practice exercises.
