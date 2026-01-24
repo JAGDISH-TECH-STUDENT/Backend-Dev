@@ -23,26 +23,46 @@ const http=require('http');
 
 // });
 const server=http.createServer((req,res)=>{
-    if(req.url==='/home'){
-        res.writeHead(200,{'content-type':'text/html'});
-        res.end('<h1>Home Page</h1>')
+    if(req.url==='/'){
+        fs.readFile('./public/home.html','utf-8',(err,data)=>{
+            if(err){
+                res.writeHead(500,{'content-type':'text/html'})
+            }
+        res.end('<h1>Welcome Home Page</h1>')
+        } );
     }
-     
     else if(req.url==='/about'){
-        res.writeHead(200,{'content-type':'text/html'});
-         res.end('<h1>About Page</h1>');
+        fs.readFile('./public/about.html','utf-8',(err,data)=>{
+            if(err){
+                res.writeHead(500,{'content-type':'text/html'});
+                res.end('<h1>About Page</h1>');
+            }
+            else{
+                res.writeHead(200,{'content-type':'text/html'});
+                res.end(data);
+            }
+        })
+        res.end('<h1>About Page</h1>');
     }
-    else if(req.url==='/contact'){
-        res.writeHead(200,{'content-type':'text/html'});
-         res.end('<h1>Contact Page</h1>');
+    else if(req.url==='/user'){
+        fs.readFile('./public/user.html','utf-8',(err,data)=>{
+            if(err){
+                res.writeHead(500,{'content-type':'text/html'});
+                res.end('<h1>User Page</h1>');
+            }
+            else{
+                res.writeHead(200,{'content-type':'text/html'});
+                res.end(data);
+            }
+        })
     }
     else{
         res.writeHead(404,{'content-type':'text/html'});
          res.end('<h1>404 Page Not Found</h1>');
     }
    
-})
+});
 
 server.listen(3000,()=>{
     console.log('Server is running on port 3000');
-});
+})
