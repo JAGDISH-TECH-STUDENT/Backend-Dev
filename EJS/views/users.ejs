@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+      <h1>User Page</h1>
+      <form action="/api/users" method="post">
+        <input type="text" name="name" placeholder="Enter your Name">
+         <input type="password" name="password" placeholder="Enter your password">
+         <button type="Submit">Submit</button>
+         
+      </form>
+    <ul>
+        <% userData.forEach((ele)=>{ %>
+            <li><%= ele.name %> <%= ele.age %> <%= ele.password %> <button><a href="/api/users/<%=ele.id%>">Delete</a></button></li>
+        <% }) %>
+    </ul>
+</body>
+</html>
