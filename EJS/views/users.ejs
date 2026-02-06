@@ -15,7 +15,13 @@
       </form>
     <ul>
         <% userData.forEach((ele)=>{ %>
-            <li><%= ele.name %> <%= ele.age %> <%= ele.password %> <button><a href="/api/users/<%=ele.id%>">Delete</a></button></li>
+            <li><%= ele.name %> <%= ele.age %> <%= ele.password %> 
+                <form action="/api/users/<%=ele.id%>?_method=DELETE" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+                <button ><a href="/editpage/<%=ele.id%>">Edit</a></button>
+            </l1>
+                    
         <% }) %>
     </ul>
 </body>
