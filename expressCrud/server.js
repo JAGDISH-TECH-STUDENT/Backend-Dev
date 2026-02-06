@@ -3,12 +3,6 @@ import fs from 'fs';
 const app = express();
 const PORT = 3000;
 app.use(express.json());  // Middleware to parse JSON bodies. used in POST requests.
-let  logfun=(req,res,next)=>{
-    let logText=`timestamp: ${new Date().toString()} url ${req.url} method ${req.method} \n`
-    fs.appendFileSync("log.txt",logText);
-    console.log(logText);
-    next();
-}
 app.use(logfun);
 let user=[
     {
