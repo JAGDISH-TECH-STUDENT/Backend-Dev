@@ -1,5 +1,5 @@
 const logger = (req, res, next) => {
-  console.log(`${req.method} ${req.url} - ${new Date().toISOString()}`);
+  console.log(req.url,req.method);
   next();
 };
 module.exports = logger;
